@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animation - Hero Car Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --soft-orange: #f5c18c;
+            --soft-peach: #f7dcc0;
+            --warm-cream: #fff8f0;
+            --dark-text: #3b2e28;
+            --muted-brown: #6b4e3f;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* ============================================================================
+           HERO SECTION STYLES
+           ============================================================================ */
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff 0%, #faf8f5 25%, #f5ede5 50%, #efe7de 75%, #e8dcd2 100%);
+            z-index: 10;
+        }
+
+        /* Animated background blobs */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            animation: heroFloat 8s ease-in-out infinite;
+        }
+
+        .hero-blob.blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 193, 140, 0.12), transparent);
+            animation-duration: 8s;
+        }
+
+        .hero-blob.blob-2 {
+            bottom: -5%;
+            right: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(247, 220, 192, 0.1), transparent);
+            animation-duration: 10s;
+            animation-direction: reverse;
+        }
+
+        .hero-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 10;
+            transform-origin: center center;
+            /* Transform applied via JavaScript */
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: heroFadeInDown 0.8s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 8px rgba(245, 193, 140, 0.1);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--muted-brown);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--soft-orange), transparent);
+            margin: 0 auto 2rem;
+        }
+
+        .car-container {
+            position: relative;
+            height: clamp(250px, 50vw, 400px);
+            margin: 2rem auto;
+            perspective: 1000px;
+        }
+
+        .car-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle at 35% 40%, rgba(245, 193, 140, 0.25), transparent 70%);
+            border-radius: 50%;
+            filter: blur(50px);
+            pointer-events: none;
+            animation: heroPulse 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .car-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(1.15) contrast(1.1) drop-shadow(0 20px 50px rgba(0, 0, 0, 0.1));
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--soft-orange) 0%, var(--soft-peach) 100%);
+            color: var(--dark-text);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(245, 193, 140, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(245, 193, 140, 0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: heroBounce 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            z-index: 5;
+        }
+
+        .scroll-indicator-text {
+            font-size: 12px;
+            color: var(--soft-orange);
+            opacity: 0.7;
+        }
+
+        .scroll-indicator-arrow {
+            width: 24px;
+            height: 24px;
+            stroke: var(--soft-orange);
+            stroke-width: 2.5;
+        }
+
+        /* ============================================================================
+           CONTENT SECTIONS STYLES
+           ============================================================================ */
+
+        .content-sections {
+            position: relative;
+            z-index: 1;
+            background: #ffffff;
+        }
+
+        .content-section {
+            min-height: 60vh;
+            padding: 4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: opacity, transform;
+        }
+
+        .content-section:nth-child(odd) {
+            background: linear-gradient(135deg, rgba(245, 193, 140, 0.03), rgba(247, 220, 192, 0.02));
+        }
+
+        .content-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            letter-spacing: 0.02em;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .content-section p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--muted-brown);
+            line-height: 1.8;
+        }
+
+        /* ============================================================================
+           ANIMATIONS
+           ============================================================================ */
+
+        @keyframes heroFadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(30px);
+            }
+        }
+
+        @keyframes heroPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes heroBounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(12px);
+            }
+        }
+
+        /* ============================================================================
+           RESPONSIVE MEDIA QUERIES
+           ============================================================================ */
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 1rem;
+            }
+
+            .hero-wrapper {
+                padding: 1rem;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            @keyframes heroFloat {
+                0%, 100% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(15px);
+                }
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ====================================================================
+         HERO SECTION
+         ==================================================================== -->
+    <section class="hero-section" id="heroSection">
+        <!-- Animated background blobs -->
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+
+        <!-- Hero wrapper yang akan di-animate -->
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1>AetherVision</h1>
+                <p>Intelligent Image Recognition, Elegantly Crafted</p>
+                <div class="hero-divider"></div>
+            </div>
+
+            <!-- Car image container -->
+            <div class="car-container">
+                <div class="car-glow"></div>
+                <img
+                    src="https://via.placeholder.com/600x400?text=Premium+Car"
+                    alt="Premium Car Illustration"
+                    class="car-image"
+                    loading="eager"
+                />
+            </div>
+
+            <!-- CTA Button -->
+            <div style="text-align: center;">
+                <button class="cta-button">Upload & Identify</button>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <span class="scroll-indicator-text">Scroll to explore</span>
+            <svg
+                class="scroll-indicator-arrow"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         CONTENT SECTIONS
+         ==================================================================== -->
+    <main class="content-sections" id="contentSections">
+        <section class="content-section" data-scroll-section>
+            <div>
+                <h2>Prediction Panel</h2>
+                <p>
+                    Dapatkan prediksi akurat dari model AI kami dengan confidence scores yang
+                    detail. Setiap analisis dilengkapi dengan penjelasan komprehensif untuk membantu
+                    Anda memahami hasil dengan lebih baik.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section" data-scroll-section>
+            <div>
+                <h2>How It Works</h2>
+                <p>
+                    Proses kami sangat sederhana: upload gambar, tunggu analisis, dapatkan hasil.
+                    Teknologi machine learning terbaru memastikan akurasi tertinggi dalam setiap
+                    identifikasi objek.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section" data-scroll-section>
+            <div>
+                <h2>Model Statistics</h2>
+                <p>
+                    Model kami telah dilatih dengan jutaan gambar dan mencapai akurasi 92% untuk
+                    top-1 classification dan 78% untuk F1 score. Terus ditingkatkan dengan data
+                    terbaru dan algoritma machine learning paling canggih.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ====================================================================
+         JAVASCRIPT - SCROLL ANIMATION
+         ==================================================================== -->
+    <script>
+        class HeroScrollAnimation {
+            constructor(heroElement, contentSelector) {
+                this.heroSection = heroElement
+                this.heroWrapper = heroElement.querySelector('.hero-wrapper')
+                this.scrollIndicator = heroElement.querySelector('.scroll-indicator')
+                this.contentSections = document.querySelectorAll(contentSelector)
+
+                this.state = {
+                    ticking: false,
+                    animationFrameId: null,
+                }
+
+                this.init()
+            }
+
+            init() {
+                // Gunakan passive listener untuk performa lebih baik
+                window.addEventListener('scroll', this.handleScroll.bind(this), {
+                    passive: true,
+                })
+                // Call once on mount untuk setup awal
+                this.handleScroll()
+            }
+
+            handleScroll() {
+                if (!this.state.ticking) {
+                    this.state.animationFrameId = requestAnimationFrame(() => {
+                        this.updateHeroAnimation()
+                        this.updateContentAnimation()
+                        this.state.ticking = false
+                    })
+                    this.state.ticking = true
+                }
+            }
+
+            updateHeroAnimation() {
+                const rect = this.heroSection.getBoundingClientRect()
+                const elementTop = rect.top
+                const elementHeight = rect.height
+                const windowHeight = window.innerHeight
+
+                // Hitung scroll progress (0 = centered, 1 = out of view)
+                const scrollProgress =
+                    (windowHeight - elementTop) / (windowHeight + elementHeight)
+                const clampedProgress = Math.max(0, Math.min(1, scrollProgress))
+
+                // Fade-out dari 5% hingga 65% progress
+                const fadeOut = Math.max(
+                    0,
+                    Math.min(1, (clampedProgress - 0.05) / 0.6)
+                )
+
+                // Hitung transformasi
+                const opacity = Math.max(0, 1 - fadeOut)
+                const scale = 1 - fadeOut * 0.3 // Scale down 30%
+                const translateY = fadeOut * -80 // Move up 80px
+
+                // Apply transformations
+                this.heroWrapper.style.opacity = opacity
+                this.heroWrapper.style.transform =
+                    `scale(${scale}) translateY(${translateY}px)`
+                this.heroWrapper.style.pointerEvents =
+                    opacity === 0 ? 'none' : 'auto'
+                this.heroWrapper.style.transition =
+                    'opacity 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.12s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+
+                // Update scroll indicator opacity
+                if (this.scrollIndicator) {
+                    this.scrollIndicator.style.opacity = Math.max(0, opacity * 0.7)
+                }
+            }
+
+            updateContentAnimation() {
+                this.contentSections.forEach((section) => {
+                    const rect = section.getBoundingClientRect()
+                    const elementTop = rect.top
+                    const elementHeight = rect.height
+                    const windowHeight = window.innerHeight
+
+                    // Fade-in calculation
+                    const scrollProgress =
+                        (windowHeight - elementTop) / (windowHeight + elementHeight)
+                    const clampedProgress = Math.max(0, Math.min(1, scrollProgress))
+                    const fadeIn = Math.max(
+                        0,
+                        Math.min(1, (clampedProgress - 0.05) / 0.6)
+                    )
+
+                    // Apply animations
+                    section.style.opacity = fadeIn
+                    section.style.transform = `translateY(${(1 - fadeIn) * 30}px)`
+                })
+            }
+
+            destroy() {
+                window.removeEventListener('scroll', this.handleScroll.bind(this))
+                if (this.state.animationFrameId) {
+                    cancelAnimationFrame(this.state.animationFrameId)
+                }
+            }
+        }
+
+        // Initialize animation on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroElement = document.getElementById('heroSection')
+            const animation = new HeroScrollAnimation(
+                heroElement,
+                '[data-scroll-section]'
+            )
+
+            // Cleanup on page unload
+            window.addEventListener('beforeunload', () => {
+                animation.destroy()
+            })
+        })
+    </script>
+</body>
+</html>

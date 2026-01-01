@@ -1,0 +1,34 @@
+/* Hilangkan background dan border dari section upload */
+.upload-section-clean {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Garis putus-putus untuk area drop tetap ada agar user tahu area uploadnya */
+.upload-drop-clean {
+  border: 2px dashed rgba(107, 78, 63, 0.3); /* Warna cokelat transparan */
+  border-radius: 20px;
+  padding: 40px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.upload-drop-clean:hover {
+  border-color: #6b4e3f;
+  background: rgba(245, 193, 140, 0.05); /* Sedikit highlight saat hover */
+  transform: translateY(-5px);
+}
+
+/* Animasi muncul dari bawah */
+[data-scroll-section] {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-scroll-section].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

@@ -1,0 +1,120 @@
+/* Theme: Royal Medieval + Soft AI — Elegant Edition */
+:root {
+  --bg-1: #fdfaf7; /* Cream putih yang lebih mewah */
+  --muted-blue: #5d463a; /* Cokelat tua untuk teks agar lebih tajam */
+  --soft-orange: #eebf8e; 
+  --soft-teal: #f3d5b5; 
+  --accent: linear-gradient(135deg, #eebf8e 0%, #d4a373 100%);
+  --card-bg: rgba(255, 255, 255, 0.75); /* Lebih transparan untuk efek glass */
+  --shadow: 0 10px 40px rgba(93, 70, 58, 0.12); /* Shadow lebih lembut & berwarna */
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --medieval: 'Cinzel', serif;
+  --system-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Page layout */
+body {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(238, 191, 142, 0.15), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(212, 163, 115, 0.1), transparent 40%),
+    url("/img/Pokemon_wallpaper.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--muted-blue);
+  font-family: var(--system-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  min-height: 100vh;
+  max-width: 1300px; /* Supaya halaman tidak terlalu lebar di monitor besar */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero Section - Dibuat lebih dramatis */
+.hero-card {
+  backdrop-filter: blur(12px) saturate(180%); /* Efek kaca yang lebih kuat */
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--glass-border);
+  padding: 3rem;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+}
+
+.site-title {
+  font-family: var(--medieval);
+  font-weight: 800;
+  font-size: 3rem;
+  background: linear-gradient(to right, #5d463a, #a67c52);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+/* Tombol CTA - Dibuat lebih "Glow" */
+.cta-primary {
+  background: var(--accent);
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 14px;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 20px rgba(212, 163, 115, 0.3);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.cta-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(212, 163, 115, 0.4);
+}
+
+/* Preview Image - Border yang lebih rapi */
+.preview-img {
+  border: 4px solid white;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Step Cards */
+.steps .step-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.steps .step-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.03);
+}
+
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.164); 
+  backdrop-filter: blur(0.5px);         
+  -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.637); 
+}
+
+.glass-effect2 {
+  background: rgba(255, 255, 255, 0.164); 
+  backdrop-filter: blur(10px);         
+  -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.637); 
+}
+
+.transparent1{
+  border: 2px solid rgba(0, 0, 0, 0.527);
+  background-color: transparent;
+}
