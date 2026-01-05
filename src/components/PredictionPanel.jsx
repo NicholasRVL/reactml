@@ -46,12 +46,11 @@ export default function PredictionPanel({ result }) {
 
       <div className="row g-4 align-items-stretch " >
 
-        {/* ================= LEFT : PREDICTION ================= */}
         <div className="col-lg-6 transparent1" style={{ borderRadius:"20px" }}>
           <div className="p-4 h-100 shadow-sm border-0 " >
 
             <div className="d-flex justify-content-between mb-3">
-              <h5 className="fw-bold text-light">Pokédex Scan</h5>
+              <h5 className="fw-bold text-light">WiraDex Scan</h5>
 
               <div className="d-column justify-content-between mb-3">
 
@@ -191,7 +190,6 @@ export default function PredictionPanel({ result }) {
           </div>
         </div>
 
-        {/* ================= RIGHT : EVOLUTION & FORMS ================= */}
         <div className="col-lg-6 transparent1" style={{ borderRadius:"20px" }}>
           <div className=" p-4 h-100 shadow-sm border-0">
 

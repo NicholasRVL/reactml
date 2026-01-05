@@ -1,4 +1,4 @@
-import React from "react"; // Hapus useState karena useForm sudah menghandle state
+import React from "react"; 
 import { useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { useForm, ValidationError } from '@formspree/react';
@@ -6,10 +6,8 @@ import { useForm, ValidationError } from '@formspree/react';
 export default function Contact() {
   const navigate = useNavigate();
   
-  // Ganti "mqpkvonw" dengan ID yang valid dari dashboard Formspree kamu
   const [state, handleSubmit] = useForm("mvzgldzo");
 
-  // Jika sukses terkirim
   if (state.succeeded) {
     return (
       <div className="container py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
@@ -26,7 +24,6 @@ export default function Contact() {
 
   return (
     <div className="container py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center">
-      {/* Tombol Back */}
       <button
         onClick={() => navigate(-1)}
         className="btn mb-4 text-white d-flex align-items-center gap-2 shadow-sm"
@@ -37,7 +34,6 @@ export default function Contact() {
 
       <div className="position-relative" style={{ maxWidth: "800px", width: "100%", backgroundColor: "#dc0a2d", borderRadius: "30px 30px 30px 100px", padding: "15px", boxShadow: "20px 20px 0px rgba(0,0,0,0.2)", border: "8px solid #8b0000" }}>
         
-        {/* Lampu Pokedex */}
         <div className="d-flex align-items-center gap-3 mb-4 ps-3">
           <div style={{ width: "50px", height: "50px", background: "radial-gradient(circle at 30% 30%, #3498db, #2980b9)", borderRadius: "50%", border: "4px solid white" }}></div>
           <div className="d-flex gap-2">
@@ -61,7 +57,7 @@ export default function Contact() {
 
           <div className="col-md-7 p-4 bg-dark text-white">
             <form onSubmit={handleSubmit}>
-              <h4 className="mb-4 text-warning" style={{ letterSpacing: "2px", fontWeight: "900" }}> CONTACT TRAINER</h4>
+              <h4 className="mb-4 text-warning" style={{ letterSpacing: "2px", fontWeight: "900" }}> CONTACT</h4>
               
               <div className="mb-3">
                 <label htmlFor="full-name" className="form-label small opacity-75">NAME</label>
@@ -87,7 +83,7 @@ export default function Contact() {
                 className="btn btn-warning w-100 fw-bold py-3"
                 style={{ borderRadius: "15px", boxShadow: "0 5px 0 #b78a02" }}
               >
-                {state.submitting ? "SENDING..." : "SEND MESSAGE [A]"}
+                {state.submitting ? "SENDING..." : "SEND MESSAGE"}
               </button>
             </form>
           </div>

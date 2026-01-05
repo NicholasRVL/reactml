@@ -12,7 +12,7 @@ export default function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.1 } // Muncul saat 10% elemen terlihat
+      { threshold: 0.1 } 
     );
 
     const sections = containerRef.current.querySelectorAll('[data-scroll-section]');

@@ -133,7 +133,6 @@ export default function DetailBall() {
 
   return (
     <div className="container py-5 text-white">
-      {/* BACK BUTTON */}
       <button
         onClick={() => navigate(-1)}
         style={{
@@ -154,7 +153,6 @@ export default function DetailBall() {
         Back to items
       </button>
 
-      {/* ===== HERO CARD (Sama seperti Pokemon Detail) ===== */}
       <div
         style={{
           background: `linear-gradient(135deg, ${theme}, #000)`,
@@ -202,7 +200,6 @@ export default function DetailBall() {
         </div>
       </div>
 
-      {/* ===== EFFECT BOX (Sama seperti Stats/Abilities) ===== */}
       <div
         style={{
           background: "#111",

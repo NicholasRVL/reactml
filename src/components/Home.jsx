@@ -69,7 +69,6 @@ export default function Home() {
         <main ref={revealRef} className="container mt-5 glass-effect2 reveal-smooth" style={{ borderRadius :"20px", backgroundColor : "#0000005d" }} >
           <div className="row justify-content-center align-items-center min-vh-50 py-5">
 
-            {/* TEXT */}
             <div className="col-md-5 text-center text-md-start mb-5 mb-md-0">
               <h2 style={{ fontFamily: 'Cinzel, serif', color: '#ffffffff', fontSize: '2.5rem' }}>
                 WiraDex
@@ -79,7 +78,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* UPLOAD */}
             <div className="col-md-6">
               <div className="upload-drop-clean d-flex flex-column align-items-center">
 

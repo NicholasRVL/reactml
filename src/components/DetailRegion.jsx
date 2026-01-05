@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
-/* ================= THEME ================= */
 const regionTheme = {
   kanto: "#2ecc71",
   johto: "#e67e22",
@@ -44,8 +43,6 @@ export default function DetailRegion() {
       try {
         setLoading(true)
         setError(false)
-
-        /* ============ REGION ============ */
         const regionRes = await fetch(
           `https://pokeapi.co/api/v2/region/${name}`
         )
@@ -53,14 +50,13 @@ export default function DetailRegion() {
         const regionData = await regionRes.json()
         setRegion(regionData)
 
-        /* ============ POKEDEX ============ */
+
         const pokedexUrl = regionData.pokedexes[0]?.url
         if (!pokedexUrl) return
 
         const pokedexRes = await fetch(pokedexUrl)
         const pokedexData = await pokedexRes.json()
 
-        /* ============ POKEMON + IMAGE ============ */
         const pokemonResults = await Promise.all(
           pokedexData.pokemon_entries.map(async (entry) => {
             const speciesRes = await fetch(entry.pokemon_species.url)
@@ -92,7 +88,7 @@ export default function DetailRegion() {
     fetchAll()
   }, [name])
 
-  /* ================= LOADING ================= */
+
   if (loading) {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
@@ -109,7 +105,6 @@ export default function DetailRegion() {
     )
   }
 
-  /* ================= ERROR ================= */
   if (error || !region) {
     return (
       <div className="py-5 text-center text-danger fw-bold">
@@ -120,7 +115,6 @@ export default function DetailRegion() {
 
   return (
     <>
-      {/* ================= HERO ================= */}
 
        <button
             onClick={() => navigate(-1)}
@@ -184,9 +178,7 @@ export default function DetailRegion() {
         </div>
       </div>
 
-      {/* ================= CONTENT ================= */}
       <div className="container py-5">
-        {/* LOCATIONS */}
         <h3 className="fw-bold mb-3">Locations</h3>
         <div className="d-flex flex-wrap gap-2 mb-5">
           {region.locations.map((loc) => (
@@ -199,7 +191,6 @@ export default function DetailRegion() {
           ))}
         </div>
 
-        {/* POKEMON */}
         <h3 className="fw-bold mb-3">Pokémon</h3>
         <div
           style={{display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",gap: "20px",}} >

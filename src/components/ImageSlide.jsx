@@ -95,7 +95,7 @@ export default function RegionSlider() {
               }}
             />
 
-            {/* Content Layer */}
+
             <div className="p-4 d-flex flex-column justify-content-end h-100" style={{ position: 'relative', zIndex: 3 }}>
               <div className="mb-2">
                 <span className="badge bg-danger mb-2 font-monospace">GEN {reg.id}</span>

@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
-/* ===== TYPE COLOR ===== */
 const typeColor = {
   grass: "#78C850",
   fire: "#F08030",
@@ -38,14 +37,12 @@ export default function DetailPokemon() {
       try {
         setLoading(true)
 
-        // ===== POKEMON =====
         const pokeRes = await fetch(
           `https://pokeapi.co/api/v2/pokemon/${name}`
         )
         const pokeData = await pokeRes.json()
         setPokemon(pokeData)
 
-        // ===== SPECIES =====
         const speciesRes = await fetch(pokeData.species.url)
         const speciesData = await speciesRes.json()
         setSpecies(speciesData)
@@ -105,8 +102,6 @@ export default function DetailPokemon() {
             Back to region
         </button>
 
-
-      {/* ===== HERO CARD ===== */}
       <div
         style={{
           background: `linear-gradient(135deg, ${typeColor[mainType]}, #000)`,
@@ -179,8 +174,6 @@ export default function DetailPokemon() {
         </div>
       </div>
 
-      {/* ===== BASE STATS ===== */}
-
       <div className="d-col py-4 px-4" style={{ background: "#111", borderRadius: "25px", padding: "30px", boxShadow: "0 20px 50px rgba(0,0,0,.5)",}}>
 
       <h3 className="fw-bold mb-3 text-light">Base Stats</h3>
@@ -212,7 +205,6 @@ export default function DetailPokemon() {
       ))}
       </div>
 
-      {/* ===== ABILITIES & MOVES ===== */}
       <div
         style={{
           background: "#111",

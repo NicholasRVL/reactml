@@ -1,15 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 
-/**
- * Hook untuk scroll animation dengan IntersectionObserver
- * Smooth scroll-based fade-in/fade-out dan scale animations
- */
 export function useScrollAnimation(threshold = 0.2) {
   const elementRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // IntersectionObserver untuk mendeteksi ketika element masuk viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

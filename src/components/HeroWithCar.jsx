@@ -18,6 +18,12 @@ export default function HeroWithCar() {
       image: "public/img/masterball.png",
       title: "Master Ball",
       subtitle: "A legendary Poké Ball with a 100% catch rate. Use only at the most crucial moments to catch the strongest Pokémon without risking failure."
+    },
+    {
+      id: 3,
+      image: "public/img/shiny-rayquaza.png",
+      title: "Shiny Pokemon",
+      subtitle: "Shiny Pokémon are ultra-rare versions of Pokémon that feature a different color scheme than their normal counterparts. This phenomenon is purely cosmetic and does not affect the Pokémon's stats or abilities in battle, but their extreme rarity makes them highly prized by trainers and collectors worldwide."
     }
   ]
 
@@ -44,10 +50,8 @@ export default function HeroWithCar() {
         zIndex: 10 
       }}>
         
-        {/* Bootstrap Carousel Standar (Slide Kanan-Kiri) */}
         <div id="heroCarousel" className="carousel slide " data-bs-ride="carousel">
           
-          {/* Indicators (Titik bawah) */}
           <div className="carousel-indicators">
             {carouselItems.map((_, index) => (
               <button 
@@ -79,7 +83,6 @@ export default function HeroWithCar() {
             ))}
           </div>
 
-          {/* Tombol Panah Kanan Kiri */}
           <button className="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span className="carousel-control-prev-icon custom-nav" aria-hidden="true"></span>
           </button>

@@ -102,7 +102,6 @@ export default function PokeballSlider() {
 
   return (
     <div className="container py-5">
-      {/* HEADER */}
       <div className="d-flex justify-content-between align-items-end mb-4">
         <div>
           <h2 className="fw-bold mb-0 text-uppercase text-light" style={{ letterSpacing: '2px' }}>
@@ -128,7 +127,6 @@ export default function PokeballSlider() {
         </div>
       </div>
 
-      {/* SLIDER */}
       <div
         id="ball-container"
         className="d-flex gap-4 py-4"
@@ -151,7 +149,6 @@ export default function PokeballSlider() {
               transition: 'all 0.4s ease'
             }}
           >
-            {/* IMAGE */}
             <div
               className="bg-image-layer"
               style={{
@@ -166,7 +163,6 @@ export default function PokeballSlider() {
               }}
             />
 
-            {/* OVERLAY */}
             <div
               style={{
                 position: 'absolute',
@@ -176,7 +172,6 @@ export default function PokeballSlider() {
               }}
             />
 
-            {/* CONTENT */}
             <div
               className="p-4 d-flex flex-column justify-content-end h-100"
               style={{ position: 'relative', zIndex: 3 }}
@@ -196,7 +191,6 @@ export default function PokeballSlider() {
         ))}
       </div>
 
-      {/* STYLE */}
       <style>{`
         .ball-card:hover .bg-image-layer {
           transform: scale(1.15);
