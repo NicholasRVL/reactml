@@ -9,19 +9,19 @@ export default function HeroWithCar() {
   const carouselItems = [
     {
       id: 1,
-      image: "public/img/gen1-removebg-preview.png",
+      image: "/img/gen1-removebg-preview.png",
       title: "WiraDex",
       subtitle: "Intelligent Image Recognition, Elegantly Crafted"
     },
     {
       id: 2,
-      image: "public/img/masterball.png",
+      image: "/img/masterball.png",
       title: "Master Ball",
       subtitle: "A legendary Poké Ball with a 100% catch rate. Use only at the most crucial moments to catch the strongest Pokémon without risking failure."
     },
     {
       id: 3,
-      image: "public/img/shiny-rayquaza.png",
+      image: "/img/shiny-rayquaza.png",
       title: "Shiny Pokemon",
       subtitle: "Shiny Pokémon are ultra-rare versions of Pokémon that feature a different color scheme than their normal counterparts. This phenomenon is purely cosmetic and does not affect the Pokémon's stats or abilities in battle, but their extreme rarity makes them highly prized by trainers and collectors worldwide."
     }

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 function Logo(){
   return (
     <div className="d-flex align-items-center gap-2 site-logo">
-        <img src="public/img/siluet/mew_siluet.png" alt="mew" style={{ width: '80px', height: 'auto' }}/>
+        <img src="/img/siluet/mew_siluet.png" alt="mew" style={{ width: '80px', height: 'auto' }}/>
 
       <div style={{lineHeight:1}}>
         <div style={{fontFamily:'Cinzel, serif'}} className="fw-bold">WiraDex</div>
@@ -32,7 +32,7 @@ export default function Header(){
             </div>
 
             <div className="d-none d-sm-flex align-items-center border shadow-sm py-2 px-4 glass-effect" style={{ borderRadius:"20px", backgroundColor : "#0000005d"}}>
-              <img src="public/img/siluet/revisi_siluet.png" alt="siluet" style={{ width: '100px', height: 'auto' }}/>
+              <img src="/img/siluet/revisi_siluet.png" alt="siluet" style={{ width: '100px', height: 'auto' }}/>
             </div>
 
             <NavLink to ='/contact' className="btn btn-sm cta-shimmer text-light" style={{ backgroundColor:"#000000ff", borderRadius:"10px"}}>Contact</NavLink>
