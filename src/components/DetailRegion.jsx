@@ -136,6 +136,7 @@ export default function DetailRegion() {
                 marginBottom: "20px",
                 backdropFilter: "blur(6px)",
                 transition: "0.3s",
+                fontFamily: "'Press Start 2P', cursive", 
             }}
             >
             Back to home
@@ -201,12 +202,7 @@ export default function DetailRegion() {
         {/* POKEMON */}
         <h3 className="fw-bold mb-3">Pokémon</h3>
         <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gap: "20px",
-          }}
-        >
+          style={{display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",gap: "20px",}} >
           {pokemons.map((p) => (
             <Link
               key={p.id}

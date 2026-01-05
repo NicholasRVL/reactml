@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Pastikan sudah install react-router-dom
+import { useNavigate } from 'react-router-dom'; 
+import '../styles/region.css'
 
 export default function RegionSlider() {
   const [regions, setRegions] = useState([]);
@@ -55,8 +56,8 @@ export default function RegionSlider() {
           <div style={{ height: '4px', width: '60px', backgroundColor:"#17e979ff"}}></div>
         </div>
         <div className="d-flex gap-2">
-          <button onClick={scrollLeft} className="btn btn-outline-light rounded-circle shadow-sm" style={{ width: '45px', height: '45px', backgroundColor:"#000000ff" }}>&larr;</button>
-          <button onClick={scrollRight} className="btn btn-outline-light rounded-circle shadow-sm" style={{ width: '45px', height: '45px', backgroundColor:"#000000ff"}}>&rarr;</button>
+          <button onClick={scrollLeft} className="btn btn-outline-light rounded-circle shadow-sm" style={{ width: '45px', height: '45px', backgroundColor:"#000000ff" }}>L</button>
+          <button onClick={scrollRight} className="btn btn-outline-light rounded-circle shadow-sm" style={{ width: '45px', height: '45px', backgroundColor:"#000000ff"}}>R</button>
         </div>
       </div>
 

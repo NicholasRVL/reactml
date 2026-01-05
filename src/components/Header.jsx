@@ -7,7 +7,7 @@ function Logo(){
         <img src="public/img/siluet/mew_siluet.png" alt="mew" style={{ width: '80px', height: 'auto' }}/>
 
       <div style={{lineHeight:1}}>
-        <div style={{fontFamily:'Cinzel, serif'}} className="fw-bold">WiraVision</div>
+        <div style={{fontFamily:'Cinzel, serif'}} className="fw-bold">WiraDex</div>
         <div className="small text-muted" style={{fontSize:10, marginTop:-2}}>gentle image AI</div>
       </div>
     </div>
@@ -35,8 +35,7 @@ export default function Header(){
               <img src="public/img/siluet/revisi_siluet.png" alt="siluet" style={{ width: '100px', height: 'auto' }}/>
             </div>
 
-            <button className="btn btn-sm cta-shimmer text-light" style={{ backgroundColor:"#683b3bff" }}>Upload</button>
-            <a className="btn btn-sm btn-outline-dark d-none d-md-inline text-light" style={{ backgroundColor:"#571111ff" }} href="/signin">Sign in</a>
+            <NavLink to ='/contact' className="btn btn-sm cta-shimmer text-light" style={{ backgroundColor:"#000000ff", borderRadius:"10px"}}>Contact</NavLink>
 
           </div>
         </div>

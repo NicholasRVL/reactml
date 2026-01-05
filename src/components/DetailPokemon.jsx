@@ -99,6 +99,7 @@ export default function DetailPokemon() {
                 marginBottom: "20px",
                 backdropFilter: "blur(6px)",
                 transition: "0.3s",
+                fontFamily: "'Press Start 2P', cursive", 
             }}
             >
             Back to region

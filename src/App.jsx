@@ -13,6 +13,9 @@ const SignIn = React.lazy(() => import("./components/auth/SignIn.jsx"))
 const SignUp = React.lazy(() => import("./components/auth/SignUp.jsx"))
 const DetailRegion = React.lazy(() => import("./components/DetailRegion.jsx"))
 const DetailPokemon = React.lazy(() => import("./components/DetailPokemon.jsx"))
+const BallSlider = React.lazy(() => import("./components/BallSlider.jsx"))
+const DetailBall = React.lazy(() => import("./components/DetailBall.jsx"))
+const Contact = React.lazy(() => import("./components/Contact.jsx"))
 
 function App() {
   
@@ -37,6 +40,13 @@ function App() {
           <Route path="/region/:name" element={<DetailRegion />} />
 
           <Route path="/pokemon/:name" element={<DetailPokemon />} />
+
+          <Route path="/ball" element={<BallSlider/>} />
+
+          <Route path="/ball/:name" element={<DetailBall/>} />
+
+          <Route path="/contact" element={<Contact/>} />
+
 
         </Routes>
 

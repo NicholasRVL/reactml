@@ -1,26 +1,12 @@
-/* Hilangkan background dan border dari section upload */
+
 .upload-section-clean {
   background: transparent;
   border: none;
   box-shadow: none;
 }
 
-/* Garis putus-putus untuk area drop tetap ada agar user tahu area uploadnya */
-.upload-drop-clean {
-  border: 2px dashed rgba(107, 78, 63, 0.3); /* Warna cokelat transparan */
-  border-radius: 20px;
-  padding: 40px;
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
 
-.upload-drop-clean:hover {
-  border-color: #6b4e3f;
-  background: rgba(245, 193, 140, 0.05); /* Sedikit highlight saat hover */
-  transform: translateY(-5px);
-}
 
-/* Animasi muncul dari bawah */
 [data-scroll-section] {
   opacity: 0;
   transform: translateY(60px);
@@ -30,5 +16,70 @@
 [data-scroll-section].is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.animate-card1{
+  animation: SlideFade 0.6s ease-out forwards;
+}
+
+.prediction-panel {
+  animation: slideFade 0.6s ease-out;
+}
+
+
+@keyframes SlideFade {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.reveal-smooth {
+  animation: slideFade 0.8s ease-out forwards;
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(233, 23, 23, 0.4);
+}
+
+.upload-drop-clean {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  padding: 30px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.upload-drop-clean:hover {
+  border-color: #e91717;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.loading-text {
+  letter-spacing: 4px;
+  animation: pulseText 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
 }
 

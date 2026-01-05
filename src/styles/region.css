@@ -1,0 +1,51 @@
+.region-card {
+  will-change: transform;
+}
+
+.region-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.05),
+    rgba(0,0,0,0.85)
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.region-card .badge {
+  background: linear-gradient(135deg, #ff3c3c, #b30000);
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+.container button.btn-outline-light {
+  border: none;
+  background-color: rgba(0,0,0,0.6) !important;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+#region-container {
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+
+.region-card {
+  animation: fadeUpCard 0.6s ease forwards;
+}
+
+@keyframes fadeUpCard {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

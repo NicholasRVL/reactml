@@ -10,14 +10,14 @@ export default function HeroWithCar() {
     {
       id: 1,
       image: "public/img/gen1-removebg-preview.png",
-      title: "WiraVision",
+      title: "WiraDex",
       subtitle: "Intelligent Image Recognition, Elegantly Crafted"
     },
     {
       id: 2,
-      image: "public/img/gen8.png",
-      title: "Swift Analysis",
-      subtitle: "Recognize objects in the blink of an eye"
+      image: "public/img/masterball.png",
+      title: "Master Ball",
+      subtitle: "A legendary Poké Ball with a 100% catch rate. Use only at the most crucial moments to catch the strongest Pokémon without risking failure."
     }
   ]
 

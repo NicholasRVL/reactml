@@ -4,7 +4,9 @@ import useScrollReveal from '../hooks/useScrollReveal'
 import '../styles/home.css'
 import PredictionPanel from './PredictionPanel'
 import ImgSlide from './ImageSlide'
+import BallSlider from './BallSlider'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import Footer from './Footer'
 
 export default function Home() {
   const revealRef = useScrollReveal()
@@ -31,7 +33,7 @@ export default function Home() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://localhost:5000/predict', {
+      const res = await fetch('http://127.0.0.1:8000/api/predict-pokemon', {
         method: 'POST',
         body: formData
       })
@@ -50,9 +52,11 @@ export default function Home() {
     <>
       <HeroWithCar />
 
+      <BallSlider/>
+
       <ImgSlide/>
 
-      <div id='container-form'>
+      <div id='container-form' className='prediction-panel'>
 
         <div className="d-flex justify-content-between align-items-end mb-4">
           <div>
@@ -62,13 +66,13 @@ export default function Home() {
         </div>
 
 
-        <main ref={revealRef} className="container mt-5 glass-effect2 " style={{ borderRadius :"20px", backgroundColor : "#0000005d" }} >
+        <main ref={revealRef} className="container mt-5 glass-effect2 reveal-smooth" style={{ borderRadius :"20px", backgroundColor : "#0000005d" }} >
           <div className="row justify-content-center align-items-center min-vh-50 py-5">
 
             {/* TEXT */}
             <div className="col-md-5 text-center text-md-start mb-5 mb-md-0">
               <h2 style={{ fontFamily: 'Cinzel, serif', color: '#ffffffff', fontSize: '2.5rem' }}>
-                WiraVision
+                WiraDex
               </h2>
               <p style={{ color: '#ffffffff', fontSize: '1.1rem' }}>
                 Unggah gambar Pokémon…
@@ -86,7 +90,7 @@ export default function Home() {
                 </label>
 
                 {file && (
-                  <p className="text-muted">
+                  <p className="text-light">
                     <i className='bi bi-image'/> {file.name}
                   </p>
                 )}
@@ -100,7 +104,7 @@ export default function Home() {
                   disabled={loading}
                   style={{
                     marginTop: '10px',
-                    background: loading ? '#310000ff' : '#680000ff', // Berubah warna saat loading
+                    background: loading ? '#310000ff' : '#680000ff',
                     color: '#fff',
                     padding: '10px 28px',
                     borderRadius: '10px',
@@ -142,6 +146,7 @@ export default function Home() {
 
         </main>
       </div>
+
     </>
   )
 }
